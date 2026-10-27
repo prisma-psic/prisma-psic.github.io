@@ -1,0 +1,23 @@
+{
+  "name": "prisma-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "API do PRISMA (Node.js + Express + MySQL 8.4): autenticação, prontuário por sessão, chat e agenda (bloqueios, 48 h, confirmação 36 h).",
+  "type": "module",
+  "main": "src/server.js",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test --test-concurrency=1 \"test/**/*.test.js\""
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.7.0",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.4.0",
+    "mysql2": "^3.24.4"
+  }
+}

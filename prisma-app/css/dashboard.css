@@ -1,0 +1,82 @@
+/* =========================================================================
+   PRISMA — dashboard.css  (tela Início)
+   ========================================================================= */
+.dash-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+#dash-kpis { margin-bottom: 20px; }
+#dash-kpis .trend a { color: inherit; }
+
+/* Próxima sessão (gradiente, como no protótipo) */
+.hero {
+  border-radius: var(--radius-xl); padding: 22px 24px; color: #fff;
+  background: var(--grad); box-shadow: 0 14px 34px rgba(99, 102, 241, .3);
+  position: relative; overflow: hidden;
+}
+.hero::after { content: ''; position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%; background: rgba(255, 255, 255, .09); }
+.eyebrow-hero { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; opacity: .85; }
+.hero-title { font-size: 22px; font-weight: 800; letter-spacing: -.01em; margin-top: 4px; }
+.hero-sub { font-size: 13px; opacity: .9; margin-top: 2px; }
+.hero-pill { display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 10px; background: rgba(255, 255, 255, .18); border: 1px solid rgba(255, 255, 255, .3); font-size: 12.5px; font-weight: 600; position: relative; z-index: 1; }
+.hero-actions { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; position: relative; z-index: 1; }
+.hero-btn { background: #fff; color: #3730a3; }
+.hero-btn:hover { text-decoration: none; opacity: .92; }
+.hero-btn.ghost { background: rgba(255, 255, 255, .16); color: #fff; border: 1px solid rgba(255, 255, 255, .35); }
+
+.dash-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 16px; margin-top: 20px; }
+.dash-col { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.card-head a { font-size: 12px; font-weight: 600; }
+
+/* Agenda */
+.agenda-row { display: flex; align-items: center; gap: 12px; padding: 12px 18px; border-bottom: 1px solid var(--border); color: inherit; }
+.agenda-row:last-child { border-bottom: 0; }
+.agenda-row:hover { background: var(--surface-2); text-decoration: none; }
+.agenda-time { width: 52px; flex: none; display: flex; flex-direction: column; }
+.agenda-time strong { font-size: 14px; }
+.agenda-time span { font-size: 10.5px; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+.agenda-bar { width: 3px; align-self: stretch; border-radius: 3px; background: #22c55e; flex: none; }
+.agenda-bar.online { background: var(--primary); }
+.mod-on { color: var(--violet); } .mod-pre { color: var(--success); }
+
+/* Pacientes recentes */
+#dash-right { padding: 6px 0; }
+.recent { display: block; padding: 12px 18px; color: inherit; border-bottom: 1px solid var(--border); }
+.recent:last-child { border-bottom: 0; }
+.recent:hover { background: var(--surface-2); text-decoration: none; }
+
+/* Atividades */
+.activity { display: flex; align-items: center; gap: 12px; padding: 10px 18px; border-bottom: 1px solid var(--border); }
+.activity:last-child { border-bottom: 0; }
+
+/* Paciente */
+.goal-mini { color: inherit; }
+.goal-mini:hover { background: var(--surface-2); text-decoration: none; }
+.goal-mini-ic { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: var(--primary-soft); color: var(--primary); flex: none; }
+.quick-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 12px; }
+.quick { display: flex; flex-direction: column; gap: 4px; padding: 14px; border-radius: 14px; border: 1px solid var(--border); color: var(--text); transition: border-color .15s, transform .15s; }
+.quick:hover { border-color: var(--primary); text-decoration: none; transform: translateY(-1px); }
+.quick-ic { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: var(--surface-3); color: var(--primary); margin-bottom: 6px; }
+
+@media (max-width: 1023px) {
+  .dash-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 767px) {
+  .hero { padding: 18px; }
+  .hero-title { font-size: 19px; }
+  .agenda-row, .recent, .activity { padding-left: 14px; padding-right: 14px; }
+}
+
+/* Solicitações de cadastro pendentes */
+.cadastros-card.has-items { border-color: var(--warning-bd); box-shadow: 0 0 0 3px color-mix(in srgb, var(--warning) 10%, transparent); }
+.cad-table td { vertical-align: middle; }
+.cad-table .nowrap { white-space: nowrap; }
+@media (max-width: 767px) {
+  .cad-table thead { display: none; }
+  .cad-table tr { display: block; padding: 12px 14px; border-bottom: 1px solid var(--border); }
+  .cad-table td { display: block; padding: 2px 0; border: 0; }
+  .cad-table td.acoes { padding-top: 8px; }
+  .cad-table td.acoes .row { justify-content: flex-start !important; }
+}
+
+/* Confirmações de presença (regra das 36 h) */
+.list-item.conf-PENDENTE_CONFIRMACAO { box-shadow: inset 3px 0 0 var(--danger); }
+.list-item.conf-LEMBRETE { box-shadow: inset 3px 0 0 var(--warning); }
+#dash-hero .alert { align-items: center; flex-wrap: wrap; }
