@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Início · PRISMA</title>
+  <meta name="description" content="PRISMA — Plataforma de Registro, Interação e Suporte de Metas Assistidas. Painel inicial.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236366f1'/%3E%3Cstop offset='1' stop-color='%23a855f7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Cpath d='M16 6.5l8.2 4.75v9.5L16 25.5l-8.2-4.75v-9.5z' fill='none' stroke='white' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='3' fill='white'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+
+  <!-- Estilos: globais + módulo da página -->
+  <link rel="stylesheet" href="./css/global.css">
+  <link rel="stylesheet" href="./css/dashboard.css">
+
+  <!-- Tema salvo + proteção de rota: sem sessão → tela de login (antes de renderizar) -->
+  <script>try{var p=JSON.parse(localStorage.getItem('prisma:prefs')||'{}');document.documentElement.dataset.theme=p.theme||'light';if(!sessionStorage.getItem('prisma:session')&&!localStorage.getItem('prisma:session')){location.replace('./pages/login.html?next=index.html');}}catch(e){}</script>
+
+  <!-- Scripts: núcleo global + módulo(s) da página -->
+  <script src="./js/global.js" defer></script>
+  <script src="./js/auth.js" defer></script>
+  <script src="./js/agenda.js" defer></script>
+  <script src="./js/metas.js" defer></script>
+  <script src="./js/dashboard.js" defer></script>
+</head>
+<body data-page="index" data-root=".">
+  <div class="app">
+    <!-- Sidebar / drawer: renderizada por global.js -->
+    <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+
+    <div class="main">
+      <!-- Topbar (troca de perfil, notificações): renderizada por global.js -->
+      <header id="topbar" class="topbar"></header>
+
+      <main id="view" class="view">
+        <!-- ============ Página modular: INÍCIO (Dashboard) ============ -->
+        <div class="dash-head">
+          <div>
+            <h1 class="h1" id="dash-greeting">Olá 👋</h1>
+            <p class="sub text-2" id="dash-date"></p>
+          </div>
+        </div>
+
+        <!-- Solicitações de cadastro pendentes (somente psicóloga) -->
+        <section class="card cadastros-card mb-16" id="dash-cadastros" aria-labelledby="cad-titulo" hidden>
+          <div class="card-head">
+            <div>
+              <h3 id="cad-titulo">Solicitações de Cadastro Pendentes</h3>
+              <div class="text-xs text-muted">Novos pacientes só acessam a plataforma após a sua aprovação.</div>
+            </div>
+            <span class="badge badge-warning" id="cad-count">0</span>
+          </div>
+          <div id="cad-lista"></div>
+        </section>
+
+        <!-- Indicadores -->
+        <section class="grid grid-4" id="dash-kpis" aria-label="Indicadores"></section>
+
+        <!-- Próxima sessão -->
+        <section id="dash-hero" aria-label="Próxima sessão"></section>
+
+        <div class="dash-grid">
+          <div class="dash-col">
+            <section class="card">
+              <div class="card-head"><h3 id="dash-left-title">—</h3><a id="dash-left-link" href="#">Ver todas</a></div>
+              <div id="dash-left"></div>
+            </section>
+            <!-- Confirmações de presença (regra das 36 h) — somente psicóloga -->
+            <section class="card" id="dash-confirmacoes" hidden>
+              <div class="card-head"><h3 id="conf-titulo">Confirmações de presença</h3><a href="pages/agenda.html?filtro=confirmacao">Ver todas</a></div>
+              <div id="conf-lista"></div>
+            </section>
+            <section class="card">
+              <div class="card-head"><h3 id="dash-agenda-title">Agenda</h3><a href="pages/agenda.html">Ver agenda completa</a></div>
+              <div id="dash-agenda"></div>
+            </section>
+          </div>
+
+          <div class="dash-col">
+            <section class="card">
+              <div class="card-head"><h3 id="dash-right-title">—</h3><a id="dash-right-link" href="#">Ver mais</a></div>
+              <div id="dash-right"></div>
+            </section>
+            <section class="card" id="dash-activity-card">
+              <div class="card-head"><h3>Atividades recentes</h3><span class="text-xs text-muted">Auditoria · LGPD</span></div>
+              <div id="dash-activity"></div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <noscript><p style="padding:24px">O PRISMA precisa de JavaScript habilitado.</p></noscript>
+</body>
+</html>

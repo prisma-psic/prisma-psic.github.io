@@ -1,0 +1,80 @@
+/* =========================================================================
+   PRISMA — metas.css  (painel de Metas terapêuticas)
+   ========================================================================= */
+.metas-layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 20px; align-items: start; }
+.metas-layout.single { grid-template-columns: minmax(0, 1fr); }
+
+/* Lista de pacientes */
+.metas-patients { position: sticky; top: calc(var(--topbar-h) + 20px); }
+#metas-pacientes-list { display: flex; flex-direction: column; gap: 6px; padding: 10px; max-height: calc(100vh - 220px); overflow-y: auto; }
+.patient-row {
+  display: flex; align-items: center; gap: 10px; width: 100%; text-align: left;
+  padding: 10px; border-radius: 12px; border: 1px solid transparent; transition: background .15s;
+}
+.patient-row:hover { background: var(--surface-3); }
+.patient-row .muted-inv { color: var(--muted); }
+.patient-row.active { background: var(--ink); color: var(--ink-contrast); }
+.patient-row.active .muted-inv { color: color-mix(in srgb, var(--ink-contrast) 70%, transparent); }
+
+/* Card de progresso geral (verde, como no protótipo) */
+.metas-hero {
+  border-radius: var(--radius-xl); padding: 22px 24px; color: #fff;
+  background: var(--grad-success); box-shadow: 0 12px 28px rgba(22, 163, 74, .25);
+}
+.eyebrow-inv { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; opacity: .9; }
+.hero-value { font-size: 44px; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; margin-top: 6px; }
+.hero-sub { font-size: 12.5px; opacity: .9; }
+.hero-bar { height: 8px; border-radius: 999px; background: rgba(255, 255, 255, .3); margin-top: 14px; overflow: hidden; }
+.hero-bar span { display: block; height: 100%; background: #fff; border-radius: inherit; transition: width .4s; }
+
+.metas-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 20px 0 12px; }
+#metas-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 14px; }
+
+/* Card de meta */
+.goal { padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; }
+.goal.cancelled { opacity: .6; }
+.goal-head { display: flex; gap: 12px; align-items: flex-start; }
+.goal-title { font-size: 14.5px; font-weight: 700; }
+.goal-ring {
+  --p: 0;
+  flex: none; width: 44px; height: 44px; border-radius: 50%;
+  background: conic-gradient(var(--primary) calc(var(--p) * 1%), var(--surface-3) 0);
+  display: grid; place-items: center;
+}
+.goal-ring span {
+  width: 34px; height: 34px; border-radius: 50%; background: var(--surface);
+  display: grid; place-items: center; font-size: 10px; font-weight: 800; color: var(--text-2);
+}
+.goal-menu { flex: none; }
+.goal-progress { display: flex; flex-direction: column; gap: 6px; }
+
+.checklist { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+.checklist li { display: flex; align-items: center; gap: 6px; border-radius: 9px; padding: 2px 4px; }
+.checklist li:hover { background: var(--surface-2); }
+.checklist li .rm { opacity: 0; transition: opacity .15s; }
+.checklist li:hover .rm, .checklist li .rm:focus-visible { opacity: 1; }
+.check { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; padding: 6px 0; cursor: pointer; font-size: 13px; }
+.check input { position: absolute; opacity: 0; pointer-events: none; }
+.check .box {
+  flex: none; width: 20px; height: 20px; border-radius: 6px; border: 1.5px solid var(--border-strong);
+  display: grid; place-items: center; color: transparent; transition: all .15s; background: var(--surface);
+}
+.check input:checked + .box { background: #22c55e; border-color: #22c55e; color: #fff; }
+.check input:focus-visible + .box { outline: 2px solid var(--primary); outline-offset: 2px; }
+.check input:disabled + .box { opacity: .5; }
+.checklist li.done .txt { color: var(--muted); text-decoration: line-through; }
+
+.add-item { display: flex; gap: 8px; }
+.add-item .input { height: 32px; font-size: 12.5px; }
+.goal-foot { display: flex; align-items: center; gap: 6px; padding-top: 10px; border-top: 1px solid var(--border); }
+
+@media (max-width: 1023px) {
+  .metas-layout { grid-template-columns: minmax(0, 1fr); }
+  .metas-patients { position: static; }
+  #metas-pacientes-list { flex-direction: row; overflow-x: auto; max-height: none; }
+  .patient-row { width: auto; flex: none; min-width: 200px; }
+}
+@media (max-width: 767px) {
+  #metas-list { grid-template-columns: minmax(0, 1fr); }
+  .hero-value { font-size: 36px; }
+}

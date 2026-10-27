@@ -1,0 +1,53 @@
+/* =========================================================================
+   PRISMA — configuracoes.css  (tela de Configurações)
+   ========================================================================= */
+.cfg-layout { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 20px; align-items: start; }
+#cfg-menu { display: flex; flex-direction: column; gap: 6px; }
+.cfg-user, .cfg-item {
+  display: flex; align-items: center; gap: 12px; width: 100%; text-align: left;
+  padding: 12px 14px; border-radius: 14px; background: var(--surface); border: 1px solid var(--border); transition: all .15s;
+}
+.cfg-user { padding: 14px; margin-bottom: 4px; }
+.cfg-item:hover, .cfg-user:hover { border-color: var(--border-strong); }
+.cfg-item .sub { color: var(--muted); }
+.cfg-item.active { background: var(--ink); color: var(--ink-contrast); border-color: var(--ink); }
+.cfg-item.active .sub { color: color-mix(in srgb, var(--ink-contrast) 70%, transparent); }
+#cfg-panel { padding: 22px 24px; min-height: 420px; }
+
+.profile-top { display: flex; align-items: center; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid var(--border); }
+
+.limit-box { display: flex; flex-direction: column; gap: 14px; max-width: 520px; padding: 18px; border-radius: var(--radius-lg); background: var(--surface-2); border: 1px solid var(--border); }
+.limit-value { display: flex; align-items: baseline; gap: 10px; }
+.limit-value .input { width: 110px; height: 52px; font-size: 26px; font-weight: 800; text-align: center; }
+.limit-value span { font-weight: 600; color: var(--text-2); }
+.limit-box input[type=range] { width: 100%; accent-color: var(--primary); }
+.rule-list { list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 13px; color: var(--text-2); }
+.rule-list li { display: flex; gap: 10px; align-items: flex-start; }
+.rule-list svg { flex: none; color: var(--primary); margin-top: 2px; }
+
+.pref-row { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--border); cursor: pointer; }
+.pref-row:last-child { border-bottom: 0; }
+
+.theme-grid { display: flex; gap: 12px; flex-wrap: wrap; }
+.theme-opt { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 10px; border-radius: 14px; border: 2px solid var(--border); font-weight: 600; font-size: 13px; }
+.theme-opt svg { display: inline; vertical-align: -2px; }
+.theme-opt.active { border-color: var(--primary); }
+.theme-prev { width: 150px; height: 90px; border-radius: 10px; border: 1px solid var(--border); }
+.theme-prev.light { background: linear-gradient(90deg, #fff 30%, #f4f5f8 30%); }
+.theme-prev.dark { background: linear-gradient(90deg, #141722 30%, #0c0e14 30%); }
+
+.audit { max-height: 440px; overflow: auto; }
+.nowrap { white-space: nowrap; }
+.about-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 24px; }
+.about-grid div { display: flex; flex-direction: column; gap: 2px; }
+.about-grid span { font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+.about-grid strong { font-size: 13px; font-weight: 600; }
+
+@media (max-width: 1023px) {
+  .cfg-layout { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 767px) {
+  #cfg-panel { padding: 18px 16px; }
+  .about-grid { grid-template-columns: minmax(0, 1fr); }
+  .theme-prev { width: 120px; }
+}
