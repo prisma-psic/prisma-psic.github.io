@@ -1,1 +1,0 @@
-# prisma-psic.github.io
